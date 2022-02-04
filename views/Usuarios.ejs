@@ -1,0 +1,59 @@
+<%- include('header'); -%>
+
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card header py-3 text-center">
+      <h6 class="m-0 font-weight-bold text-danger" style="font-size: 30px;">Usuarios</h6>
+    </div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 20px;">
+          <thead>
+           <a href="CrearUser" type="button" value="Nuevo Usuario" class="btn btn-secondary btn-lg" id="btn-usuario" href><i class="fas fa-user-plus" ></i>Crear Usuario</a>
+            
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+          </thead>
+            <tbody>
+              <% for(let usuario = 0; usuario < usuarios.length; usuario++) { %>
+                <tr>
+                  <td><%=usuarios[usuario].idusuario%></td>
+                  <td><%=usuarios[usuario].nombre%></td>
+                  <td><%=usuarios[usuario].usuario%></td>
+                  <td><%=usuarios[usuario].rol%></td>
+                  <td>
+                    <div class="btn-editar">
+                      <form action="Usuarios/editarusuario/<%=usuarios[usuario].idusuario%>" method="get">
+
+                         <button class="w3-button w3-blue w3-round-large w3-ripple" type="submit">Editar</button>
+
+                      </form>
+                    </div>
+                    <div class="btn-borrar">
+                       <form action="Usuarios/eliminarusuario/<%=usuarios[usuario].idusuario%>" method="post">
+
+                          <button class="w3-button w3-red w3-round-large w3-ripple">Borrar</button>
+
+                       </form>
+                    </div>
+                  </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<%- include('footer'); -%>

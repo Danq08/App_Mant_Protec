@@ -1,0 +1,67 @@
+<%- include('header'); -%>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 text-center">
+        <h6 class="m-0 font-weight-bold text-primary" style="font-size: 30px;">Bitacora</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size: 20px;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha y Hora </th>
+                <th>Area</th>
+                <th>Equipo</th>
+                <th>Observaciones</th>
+                <th>Estado</th>
+                <th>Fotos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let historialgeneral = 0; historialgeneral < registros.length; historialgeneral++) { %>
+            <tr>
+                <td> <%=registros[historialgeneral].id%></td>
+                <td> <%=registros[historialgeneral].fechayhora%> </td>
+                <td> <%=registros[historialgeneral].categoria%> </td>
+                <td> <%=registros[historialgeneral].equipo%> </td>
+                <td> <%=registros[historialgeneral].observaciones%> </td>
+                <td> <%=registros[historialgeneral].estado%> </td>
+                <td> 
+                    <img src="images/<%=registros[historialgeneral].foto%> " width="100px" alt="">
+                </td>
+                <td>
+                    <div class="btn-editar">
+                        <form action="registrosgeneral/editargeneral/<%=registros[historialgeneral].id%>" method="get">
+
+                           <button class="w3-button w3-blue w3-round-large w3-ripple" type="submit">Editar</button>
+
+                        </form>
+                    </div>
+
+                    
+
+                     <div class="btn-borrar">
+                         <form action="registrosgeneral/eliminargeneral/<%=registros[historialgeneral].id%>" method="post">
+
+                            <button class="w3-button w3-red w3-round-large w3-ripple">Borrar</button>
+
+                         </form>
+                     </div>
+                
+                   
+                
+                
+                </td>
+            </tr>
+            <% } %>
+        
+        </tbody>
+    </table>
+</div>
+    </div>
+        </div>
+
+
+        <%- include('footer'); -%>

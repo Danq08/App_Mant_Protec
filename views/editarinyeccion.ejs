@@ -1,0 +1,49 @@
+<%- include('header'); -%>
+  <div class="contenedor">
+    <div class="form-registro">
+          <h1>Equipos</h1>
+
+          <form  method="post" action="../actualizar" enctype="multipart/form-data">
+
+              <input type="text" name="id" value="<%=registro.id%>" hidden>
+
+              <select name="categoria" id="categoria" class="sel-cat" onchange="cargarEquipos();">
+                  <option value=""><%=registro.categoria%></option>
+              </select>
+
+              <select name="equipo" id="equipo" class="sel-cat">
+                  <option value=""><%=registro.equipo%></option>
+              </select>
+
+            <h1 style="padding-top: 30px;">Observaciones</h1>
+
+                <textarea name='observaciones' id="atexto" placeholder="Escribe aqui"><%=registro.observaciones%></textarea>
+
+            <div class="radio">
+
+              <input type="radio" name="estado" id="Reciente" value="Reciente">
+              <label for="Reciente">Reciente</label>
+
+              <input type="radio" name="estado" id="En Progreso" value="En progreso">
+              <label for="En Progreso">En Progreso</label>
+
+              <input type="radio" name="estado" id="Solucionado" value="Solucionado">
+              <label for="Solucionado">Solucionado</label>
+
+            </div>
+
+            <h1 style="padding-top: 30px;">Subir fotos</h1>
+
+              <input  id="foto1" name="foto" type="file" accept="image/*" capture="camera">
+                <label for="foto1" id="camara1">
+                  <img src="../../images/<%=registro.foto%>" width="200" alt="">
+                </label>
+                <div>
+                    <input type="submit" class="btn-registros" value="Enviar">
+                </div>
+
+</form>
+</div>
+</div>
+<%- include('footer'); -%>
+<script>cargarCategorias();</script>

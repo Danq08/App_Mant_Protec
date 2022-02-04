@@ -1,0 +1,45 @@
+<%- include('header'); -%>
+<div class="contenedor">
+  <div class="form-registro">
+          <h1>Equipos</h1>
+
+          <form method="post" action="/registrosinyeccion" enctype="multipart/form-data">
+            
+             <select name="categoria" id="categoria" class="sel-cat" onchange="cargarEquipos();">
+                 <option value="">Seleccione Area...</option>
+             </select>
+
+             <select name="equipo" id="equipo" class="sel-cat">
+                 <option value="">Seleccione un Equipo...</option>
+             </select>
+
+            <h1 style="padding-top: 30px;">Observaciones</h1>
+
+            <textarea name='observaciones' id="atexto" placeholder="Escribe aqui" required></textarea>
+
+        <div class="radio">
+
+	        <input type="radio" name="estado" id="Reciente" value="Revisado" required>
+          <label for="Reciente">Reciente</label>
+
+	        <input type="radio" name="estado" id="En Progreso" value="En Progreso" required>
+          <label for="En Progreso">En Progreso</label>
+          
+	        <input type="radio" name="estado" id="Solucionado" value="Terminado" required>
+          <label for="Solucionado">Solucionado</label>
+
+        </div>
+            <h1 style="padding-top: 30px;">Subir fotos</h1>
+             <input  id="foto1" name="foto" type="file" accept="image/*" capture="camera" required>
+              <label for="foto1" id="camara1">
+              <i class="fas fa-camera fa-10x"></i>
+              </label>
+              <div>
+  <input type="submit" class="btn-registros" value="Enviar">
+</div>
+</form>
+</div>
+</div>
+
+<%- include('footer'); -%>
+<script>cargarCategorias();</script>
